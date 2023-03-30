@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Feature Introduction using Driver.js</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/driver.js/0.9.8/driver.min.js" integrity="sha512-TMCPpR1wPPr92/7kiF88j9uTWczLpHyUTzt8sScGyN2btq/xWN22GjsdgNfUIMDtXV5WXUZ4s2OThcgpVxQv4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/driver.js/0.9.8/driver.min.css" integrity="sha512-yQuTmOu0Rm68Udrrd2uqDvHc/xzvQxJoNzYgLn7SK+EpPuEKZu82S44D2G++HLiz6lhUShgJPOri7zvRTVtyZQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/driver.js@0.2.0/dist/driver.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+  <script src="https://unpkg.com/driver.js@0.2.0/dist/driver.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+    <section class="section">
+        <h1 class='title'> driver testing</h1>
+        <a class="button is-primary" id="btn1">btn1</a>
+        <div class="field">
+        <label class="label"></label>
+          <div class="control">
+            <input class="input" id="test1" type="text" placeholder="Text input">
+          </div>
+        </div>
+        
+        <a class="button is-link" id="btn2">btn2</a>
+        <div class="field">
+        <label class="label"></label>
+          <div class="control">
+            <input class="input" id="test2" type="text" placeholder="Text input">
+          </div>
+        </div>
+        
+         <a class="button is-info" id="btn3">btn3</a>
+        <div class="field">
+        <label class="label"></label>
+          <div class="control">
+            <input class="input" id="test3" type="text" placeholder="Text input">
+          </div>
+        </div>
+        
+      </section>
+      <script>
+        var driver = new Driver();
+
+// btn1 example
+document.getElementById('btn1')
+        .addEventListener('click', function(event) {
+        event.stopPropagation();
+  
+        driver.highlight({
+        element: '#test1',
+        popover: {
+          title: 'test',
+          description: 'test',
+          }
+        });
+  
+});
+
+// // focus sample
+document.getElementById('test1')
+        .addEventListener('focus', function(event) {
+          event.stopPropagation();
+          driverZero = new Driver({
+            opacity: 0,
+          });
+  
+          driverZero.highlight({
+            element: '#test1',
+            popover: {
+              title: 'here',
+              description: 'new line here',
+              position: 'top'
+              }
+            });
+});
+
+// btn2 example
+document.getElementById('btn2')
+        .addEventListener('click', function(event) {
+          // event.stopPropagation();
+          driver.defineSteps([
+          {
+            element: '#test1',
+            popover: {
+              title: 'feature1',
+              description: 'This is the first feature of the application',
+              }
+           },
+            {
+            element: '#test2',
+            popover: {
+              title: 'feature2',
+              description: 'This is the first feature of the application3',
+              }
+           },
+            {
+            element: '#test3',
+            popover: {
+              title: 'feature3',
+              description: 'This is the first feature of the application3',
+              }
+           }
+           ]);
+
+          driver.start();
+  
+});
+
+document.getElementById('btn3')
+        .addEventListener('click', function(event) {
+          event.stopPropagation();
+  
+           driver.defineSteps([
+          {
+            element: '#test1',
+            popover: {
+              title: 'input-box-1',
+              description: 'This is the first feature of the application',
+              doneBtnText: 'Done',     
+              closeBtnText: 'Close',   
+              nextBtnText: 'Next',     
+              prevBtnText: 'Previous', 
+              }
+           },
+            {
+            element: '#test2',
+            popover: {
+              title: 'input-box-2',
+              description: 'This is the first feature of the application',
+              doneBtnText: 'Done',     
+              closeBtnText: 'Close',   
+              nextBtnText: 'Next',     
+              prevBtnText: 'Previous', 
+              
+              }
+           },
+            {
+            element: '#test3',
+            popover: {
+              title: 'input-box-3',
+              description: 'This is the first feature of the application',
+              doneBtnText: 'Done',     
+              closeBtnText: 'Close',   
+              nextBtnText: 'Next',     
+              prevBtnText: 'Previous', 
+              }
+           }
+           ]);
+
+          driver.start();
+
+  
+});
+      </script>
+</body>
+	
+</html>
